@@ -2,7 +2,38 @@ body{
   background-color: #424242;
 }
 
+
+ul{
+  margin-left: -2%;
+}
+
 .edit-button{
+  color: white;
+  width: 70px;
+  height: 70px;
+  font-size: 8px;
+  font-weight: bolder;
+  background-color: #2B2B2B;
+  margin-top: 5px;
+  border-radius: 0.5em;
+}
+
+.operation_button_set{
+  list-style-type: none;
+  overflow: hidden;
+  float: right;
+  right: 50px;
+  display: block;
+  position: absolute;
+  bottom: 2%;
+}
+
+.operation_button_set li div{
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.operation_button{
   color: white;
   width: 70px;
   height: 70px;

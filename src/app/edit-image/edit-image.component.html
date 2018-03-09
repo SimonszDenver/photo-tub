@@ -2,8 +2,33 @@
 
   <ul style="list-style: none; margin-top: 5%">
     <li class="edit-button" *ngFor="let button of edit_buttons">
-      <div class="edit-button" id="{{ button.id  }}">{{ button.name | uppercase}}</div>
+      <div class="edit-button" id="{{ button.id  }}">
+        <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
+        <div style="margin-top: 8px">{{ button.name | uppercase}}</div>
+      </div>
     </li>
   </ul>
 
+  <div style="color: white;
+  width: 70px;
+  height: 70px;
+  font-size: 8px;
+  font-weight: bolder;
+  background-color: #2B2B2B;
+  margin-top: 8%;
+  border-radius: 0.5em;
+  margin-left: 1%">
+    <i style="margin-top: 10px" class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i><br>
+    <div style="margin-top: 8px">QUICK EDIT</div>
+  </div>
+
+  <ul class="operation_button_set">
+    <li>
+      <div class="operation_button" *ngFor="let button of operation_buttons">
+        <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i><br>
+        <div style="margin-top: 8px">{{ button.name | uppercase }}</div>
+      </div>
+      <!--<div style="width: 5px"></div>-->
+    </li>
+  </ul>
 </div>

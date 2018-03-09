@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { EditImageComponent } from './edit-image/edit-image.component';
 import {EditButtonService} from '../edit-button.service';
+import {OperationButtonService} from '../operation-button.service';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import {EditButtonService} from '../edit-button.service';
   imports: [
     BrowserModule
   ],
-  providers: [EditButtonService],
+  providers: [EditButtonService, OperationButtonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

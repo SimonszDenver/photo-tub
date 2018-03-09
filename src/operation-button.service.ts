@@ -4,17 +4,17 @@ import {Button} from './button';
 const operation_buttons = [
   {
     id: 7,
-    icon: '',
+    icon: 'fa fa-times',
     name: 'Cancel'
   },
   {
     id: 8,
-    icon: '',
+    icon: 'fa fa-download',
     name: 'Save'
   },
   {
     id: 9,
-    icon: '',
+    icon: 'fa fa-print',
     name: 'Print'
   }
 ];
