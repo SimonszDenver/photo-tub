@@ -1,0 +1,9 @@
+<div ngClass="main-class">
+
+  <ul style="list-style: none; margin-top: 5%">
+    <li class="edit-button" *ngFor="let button of edit_buttons">
+      <div class="edit-button" id="{{ button.id  }}">{{ button.name | uppercase}}</div>
+    </li>
+  </ul>
+
+</div>

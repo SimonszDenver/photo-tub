@@ -1,0 +1,14 @@
+body{
+  background-color: #424242;
+}
+
+.edit-button{
+  color: white;
+  width: 70px;
+  height: 70px;
+  font-size: 8px;
+  font-weight: bolder;
+  background-color: #2B2B2B;
+  margin-top: 5px;
+  border-radius: 0.5em;
+}

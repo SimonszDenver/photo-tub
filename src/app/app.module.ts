@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { EditImageComponent } from './edit-image/edit-image.component';
+import {EditButtonService} from '../edit-button.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditImageComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [EditButtonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
