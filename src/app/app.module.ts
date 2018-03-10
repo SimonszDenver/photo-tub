@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { EditImageComponent } from './edit-image/edit-image.component';
 import {EditButtonService} from '../edit-button.service';
 import {OperationButtonService} from '../operation-button.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {OperationButtonService} from '../operation-button.service';
     EditImageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [EditButtonService, OperationButtonService],
   bootstrap: [AppComponent]
