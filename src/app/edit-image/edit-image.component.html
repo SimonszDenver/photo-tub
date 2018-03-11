@@ -1,26 +1,31 @@
 <div ngClass="main-class">
 
   <!--load buttons which are used to edit an image-->
-<div style="display: inline; float: left; margin-top: 5%">
-  <ul style="list-style: none; margin-top: 5%;">
-    <li class="edit-button" *ngFor="let button of edit_buttons">
-      <div class="edit-button" id="{{ button.id  }}">
-        <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
-        <div style="margin-top: 8px">{{ button.name | uppercase}}</div>
-      </div>
-    </li>
-  </ul>
+  <div style="display: inline; float: left; margin-top: 5%">
+    <ul style="list-style: none; margin-top: 5%;">
+      <li class="edit-button" *ngFor="let button of edit_buttons">
+        <div class="edit-button" id="{{ button.id  }}">
+          <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
+          <div style="margin-top: 8px">{{ button.name | uppercase}}</div>
+        </div>
+      </li>
+    </ul>
 
-  <!-- load quick edit button -->
-  <div id="quick-edit">
-    <i style="margin-top: 10px" class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i><br>
-    <div style="margin-top: 8px">QUICK EDIT</div>
+    <!-- load quick edit button -->
+    <ul style="list-style: none; float: left">
+      <li class="quick-edit-list" [class.selected]="selectedButton && selectedButton.name === button.name" *ngFor="let button of quick_edit">
+        <div class="quick-edit-button" id="quick-edit" style="margin-left: 1%;"
+              (mouseenter)="onSelectButton(button)" (mouseleave)="onDeselectButton()">
+          <i style="margin-top: 10px" class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i><br>
+          <div style="margin-top: 8px">{{button.name | uppercase}}</div>
+        </div>
+      </li>
+    </ul>
   </div>
-</div>
 
   <!-- load options of quick edit button -->
 
-  <ul style="list-style: none;float: left; position: static; margin-top: 11%">
+  <ul style="list-style: none;float: left; position: static; margin-top: 11.2%;" *ngIf="selectedButton">
     <li class="quick-edit-button" *ngFor="let button of quick_edit_buttons">
       <div class="quick-edit-button" id="{{ button.id }}">
         <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
@@ -39,7 +44,6 @@
       </div>
     </li>
   </ul>
-
 
 
 </div>

@@ -8,6 +8,7 @@ import {EditButtonService} from './edit-button.service';
 import {OperationButtonService} from './operation-button.service';
 import { AppRoutingModule } from './/app-routing.module';
 import {QuickEditOptionsService} from './quick-edit-options.service';
+import {QuickEditButtonService} from './quick-edit-button.service';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import {QuickEditOptionsService} from './quick-edit-options.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [EditButtonService, OperationButtonService, QuickEditOptionsService],
+  providers: [EditButtonService, OperationButtonService, QuickEditOptionsService, QuickEditButtonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
