@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Button} from './button';
+import {Button} from '../button';
 
 const operation_buttons = [
   {

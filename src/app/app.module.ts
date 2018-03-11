@@ -4,9 +4,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { EditImageComponent } from './edit-image/edit-image.component';
-import {EditButtonService} from '../edit-button.service';
-import {OperationButtonService} from '../operation-button.service';
+import {EditButtonService} from './edit-button.service';
+import {OperationButtonService} from './operation-button.service';
 import { AppRoutingModule } from './/app-routing.module';
+import {QuickEditOptionsService} from './quick-edit-options.service';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { AppRoutingModule } from './/app-routing.module';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [EditButtonService, OperationButtonService],
+  providers: [EditButtonService, OperationButtonService, QuickEditOptionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
