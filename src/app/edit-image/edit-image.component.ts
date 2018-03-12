@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Button } from '../../button';
-import {EditButtonService} from '../edit-button.service';
-import {OperationButtonService} from '../operation-button.service';
-import {QuickEditOptionsService} from '../quick-edit-options.service';
-import {QuickEditButtonService} from '../quick-edit-button.service';
+import { Button } from '../shared/models/button';
+import {EditButtonService} from '../shared/services/edit-button.service';
+import {OperationButtonService} from '../shared/services/operation-button.service';
+import {QuickEditOptionsService} from '../shared/services/quick-edit-options.service';
+import {QuickEditButtonService} from '../shared/services/quick-edit-button.service';
 
 @Component({
   selector: 'app-edit-image',

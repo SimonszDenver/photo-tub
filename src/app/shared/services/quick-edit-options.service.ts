@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
-import {Button} from '../button';
+import {Button} from '../models/button';
 
 const buttons = [
   {
     id: 1,
-    icon: 'fa fa-adjust',
+    icon: 'fa fa-snowflake-o',
     name: 'Grain'
   },
   {
     id: 2,
-    icon: 'fa fa-film',
+    icon: 'fa fa-window-maximize',
     name: 'Vignet'
   },
   {
     id: 3,
-    icon: 'fa fa-file-image-o',
+    icon: 'fa fa-sun-o',
     name: 'Brightness'
   },
   {
     id: 4,
-    icon: 'fa fa-picture-o',
+    icon: 'fa fa-adjust',
     name: 'Contrast',
   },
   {
@@ -29,7 +29,7 @@ const buttons = [
   },
   {
     id: 6,
-    icon: 'fa fa-font',
+    icon: 'fa fa-low-vision',
     name: 'Vibrance'
   }
 ];

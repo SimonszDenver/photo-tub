@@ -1,5 +1,5 @@
 body{
-  background-color: #424242;
+  /*background-color: #424242;*/
 }
 
 
@@ -21,7 +21,7 @@ ul{
 .operation_button_set{
   list-style-type: none;
   overflow: hidden;
-  float: right;
+  /*float: right;*/
   right: 50px;
   display: block;
   position: absolute;

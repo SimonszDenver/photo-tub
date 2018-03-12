@@ -4,17 +4,19 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { EditImageComponent } from './edit-image/edit-image.component';
-import {EditButtonService} from './edit-button.service';
-import {OperationButtonService} from './operation-button.service';
+import {EditButtonService} from './shared/services/edit-button.service';
+import {OperationButtonService} from './shared/services/operation-button.service';
 import { AppRoutingModule } from './/app-routing.module';
-import {QuickEditOptionsService} from './quick-edit-options.service';
-import {QuickEditButtonService} from './quick-edit-button.service';
+import {QuickEditOptionsService} from './shared/services/quick-edit-options.service';
+import {QuickEditButtonService} from './shared/services/quick-edit-button.service';
+import { LoadImageComponent } from './load-image/load-image.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditImageComponent
+    EditImageComponent,
+    LoadImageComponent
   ],
   imports: [
     BrowserModule,
