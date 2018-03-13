@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-// import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+import {DomSanitizer} from '@angular/platform-browser';
+import {DataService} from "../shared/services/data.service";
 
 const uri = 'http://localhost:4200/assets/uploaded-images';
 
@@ -10,17 +12,28 @@ const uri = 'http://localhost:4200/assets/uploaded-images';
   styleUrls: ['./load-image.component.css']
 })
 export class LoadImageComponent implements OnInit {
-  // uploader: FileUploader = new FileUploader({url: uri});
-  // attachmentList: any = [];
-  constructor(private router: Router) {
-    // this.uploader.onCompleteItem = (item: any, response: any, status: any, header: any) => {
-    //   this.attachmentList.push(JSON.parse(response));
-    // };
+
+  url = null;
+  constructor(private router: Router,
+              private dataservice: DataService) {
   }
 
   ngOnInit() {
   }
-  onButtonClick(): void {
-    this.router.navigateByUrl('/edit-image');
+  redirect(): void {
+    this.router.navigate(['/edit-image']);
+
+  }
+
+  readUrl(event: any) {
+       const reader = new FileReader();
+      reader.onload = (event1: any) => {
+        this.dataservice.url = event1.target.result;
+
+        if (this.dataservice.url != null) {
+          this.redirect();
+        }
+      };
+       reader.readAsDataURL(event.target.files[0]);
   }
 }

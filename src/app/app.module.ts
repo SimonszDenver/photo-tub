@@ -10,8 +10,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import {QuickEditOptionsService} from './shared/services/quick-edit-options.service';
 import {QuickEditButtonService} from './shared/services/quick-edit-button.service';
 import { LoadImageComponent } from './load-image/load-image.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {FileUploadModule} from 'ng2-file-upload';
+import {HttpClientModule} from '@angular/common/http';
+import {DataService} from "./shared/services/data.service";
 
 @NgModule({
   declarations: [
@@ -23,9 +23,8 @@ import {FileUploadModule} from 'ng2-file-upload';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FileUploadModule
   ],
-  providers: [EditButtonService, OperationButtonService, QuickEditOptionsService, QuickEditButtonService],
+  providers: [EditButtonService, OperationButtonService, QuickEditOptionsService, QuickEditButtonService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

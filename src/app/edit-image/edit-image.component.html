@@ -2,7 +2,7 @@
 <div ngClass="main-class">
 
   <!--load buttons which are used to edit an image-->
-  <div style="display: inline; float: left; margin-top: 5%">
+  <div style="display: inline; float: left; margin-top: 5%; " >
     <ul style="list-style: none; margin-top: 5%;">
       <li class="edit-button" *ngFor="let button of edit_buttons">
         <div class="edit-button" id="{{ button.id  }}">
@@ -11,6 +11,8 @@
         </div>
       </li>
     </ul>
+
+
 
     <!-- load quick edit button -->
     <ul style="list-style: none; float: left">
@@ -46,5 +48,11 @@
     </li>
   </ul>
 
+  <div class="layout-align" id="image-div">
+
+    <img id="editing-image" [src]="url">
+
+  </div>
+  <!--<img src="../../assets/index.jpeg">-->
 
 </div>

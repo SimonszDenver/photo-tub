@@ -4,6 +4,9 @@ import {EditButtonService} from '../shared/services/edit-button.service';
 import {OperationButtonService} from '../shared/services/operation-button.service';
 import {QuickEditOptionsService} from '../shared/services/quick-edit-options.service';
 import {QuickEditButtonService} from '../shared/services/quick-edit-button.service';
+import {ActivatedRoute} from '@angular/router';
+import {DomSanitizer} from '@angular/platform-browser';
+import {DataService} from "../shared/services/data.service";
 
 @Component({
   selector: 'app-edit-image',
@@ -17,10 +20,14 @@ export class EditImageComponent implements OnInit {
   operation_buttons: Button[];
   quick_edit_buttons: Button[];
   quick_edit: Button[];
-  constructor(private edit_button_service: EditButtonService
-              , private operation_button_service: OperationButtonService
-              , private quick_edit_button_service: QuickEditOptionsService
-              , private quick_edit_service: QuickEditButtonService) { }
+  url = null;
+  constructor(private edit_button_service: EditButtonService,
+              private operation_button_service: OperationButtonService,
+              private quick_edit_button_service: QuickEditOptionsService,
+              private quick_edit_service: QuickEditButtonService,
+              private dataService: DataService) {
+    this.url = dataService.url;
+  }
 
   ngOnInit() {
     this.getButtons();

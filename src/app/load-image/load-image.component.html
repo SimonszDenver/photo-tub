@@ -4,11 +4,9 @@
     <h1 style="cursor: default">PHOTO TUB</h1>
     <div>
       <i style="color: white; cursor: pointer;" class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i><br>
-      <input type="file" style=" cursor: pointer; font-size: 12px; margin-top: 2%; margin-left: 23%">
-        <!--multiple ng2FileSelect [uploader]="uploader">-->
-      <!--<div *ngIf="uploader?.queue?.length > 0">-->
-      <!--<button type="button" (click)="uploader.uploadAll()">Upload</button>-->
-      <!--</div>-->
+      <input type="file" style=" cursor: pointer; font-size: 12px; margin-top: 2%; margin-left: 23%" (change)="readUrl($event)">
+      <!--<object *ngIf="url" [data]="url"></object>-->
+      <img src="data:image/jpg;base64,{{url}}">
     </div>
   </div>
 </div>
