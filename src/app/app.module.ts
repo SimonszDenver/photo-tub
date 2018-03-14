@@ -12,6 +12,10 @@ import {QuickEditButtonService} from './shared/services/quick-edit-button.servic
 import { LoadImageComponent } from './load-image/load-image.component';
 import {HttpClientModule} from '@angular/common/http';
 import {DataService} from "./shared/services/data.service";
+import {MatCardModule} from "@angular/material";
+import {AdjustmentButtonOptionsService} from "./shared/services/adjustment-button-options.service";
+import {EffectButtonServiceService} from "./shared/services/effect-button-service.service";
+import {BorderButtonOptionsService} from "./shared/services/border-button-options.service";
 
 @NgModule({
   declarations: [
@@ -23,8 +27,18 @@ import {DataService} from "./shared/services/data.service";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatCardModule
   ],
-  providers: [EditButtonService, OperationButtonService, QuickEditOptionsService, QuickEditButtonService, DataService],
+  providers: [
+    EditButtonService,
+    OperationButtonService,
+    QuickEditOptionsService,
+    QuickEditButtonService,
+    DataService,
+    AdjustmentButtonOptionsService,
+    EffectButtonServiceService,
+    BorderButtonOptionsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

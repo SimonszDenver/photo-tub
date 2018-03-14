@@ -13,11 +13,6 @@ const buttons = [
     name: 'Effect'
   },
   {
-    id: 3,
-    icon: 'fa fa-file-image-o',
-    name: 'Overlay'
-  },
-  {
     id: 4,
     icon: 'fa fa-picture-o',
     name: 'Border',

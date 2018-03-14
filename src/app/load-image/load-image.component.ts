@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
 import {DomSanitizer} from '@angular/platform-browser';
 import {DataService} from "../shared/services/data.service";
 
@@ -22,7 +21,6 @@ export class LoadImageComponent implements OnInit {
   }
   redirect(): void {
     this.router.navigate(['/edit-image']);
-
   }
 
   readUrl(event: any) {
