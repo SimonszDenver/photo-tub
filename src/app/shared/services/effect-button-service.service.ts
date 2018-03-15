@@ -4,42 +4,42 @@ import {Button} from "../models/button";
 const buttons = [
   {
     id: 1,
-    icon: '',
+    icon: 'default.jpg',
     name: 'Default'
   },
   {
     id: 2,
-    icon: '',
+    icon: 'atomic.jpg',
     name: 'Atomic'
   },
   {
     id: 3,
-    icon: '',
-    name: 'Creative'
+    icon: 'custom.jpg',
+    name: 'Custom'
   },
   {
     id: 4,
-    icon: '',
+    icon: 'soft.jpg',
     name: 'Soft'
   },
   {
     id: 5,
-    icon: '',
+    icon: 'subtle.jpg',
     name: 'Subtle'
   },
   {
     id: 6,
-    icon: '',
+    icon: 'tooOld.jpg',
     name: 'Old'
   },
   {
     id: 7,
-    icon: '',
+    icon: 'unicolor.jpg',
     name: 'Unicolor'
   },
   {
     id: 8,
-    icon: '',
+    icon: 'vintage.jpg',
     name: 'Vintage'
   }
 ];

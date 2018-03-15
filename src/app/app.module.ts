@@ -16,6 +16,7 @@ import {MatCardModule} from "@angular/material";
 import {AdjustmentButtonOptionsService} from "./shared/services/adjustment-button-options.service";
 import {EffectButtonServiceService} from "./shared/services/effect-button-service.service";
 import {BorderButtonOptionsService} from "./shared/services/border-button-options.service";
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {BorderButtonOptionsService} from "./shared/services/border-button-option
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatSliderModule
   ],
   providers: [
     EditButtonService,
@@ -37,7 +39,7 @@ import {BorderButtonOptionsService} from "./shared/services/border-button-option
     DataService,
     AdjustmentButtonOptionsService,
     EffectButtonServiceService,
-    BorderButtonOptionsService
+    BorderButtonOptionsService,
   ],
   bootstrap: [AppComponent]
 })

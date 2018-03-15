@@ -9,6 +9,7 @@ import {DataService} from "../shared/services/data.service";
 import {AdjustmentButtonOptionsService} from "../shared/services/adjustment-button-options.service";
 import {EffectButtonServiceService} from "../shared/services/effect-button-service.service";
 import {BorderButtonOptionsService} from "../shared/services/border-button-options.service";
+import {ThemePalette} from "@angular/material";
 
 @Component({
   selector: 'app-edit-image',
@@ -16,11 +17,13 @@ import {BorderButtonOptionsService} from "../shared/services/border-button-optio
   styleUrls: ['./edit-image.component.css']
 })
 export class EditImageComponent implements OnInit {
-  @Input() quick_edit_button: Button;
+
+  // quick_edit_button: Button;
   selectedButton: Button;
   selectedAdjustmentButton: Button;
   selectedEffectButton: Button;
   selectedBorderButton: Button;
+  selectedOptionButton: Button;
   edit_buttons: Button[];
   operation_buttons: Button[];
   quick_edit_buttons: Button[];
@@ -56,18 +59,47 @@ export class EditImageComponent implements OnInit {
     }else if(button.name === 'Border'){
       this.selectedBorderButton = button;
     }
+    this.deselectOtherButton(button);
   }
 
-  onDeselectButton(button) {
+  deselectOtherButton(button){
     if(button.name === 'quick edit') {
-      this.selectedButton = null;
-    }else if(button.name === 'Adjustment'){
       this.selectedAdjustmentButton = null;
-    }else if(button.name === 'Effect'){
       this.selectedEffectButton = null;
-    }else if(button.name === 'Border'){
       this.selectedBorderButton = null;
+    }else if(button.name === 'Adjustment'){
+      this.selectedButton = null;
+      this.selectedEffectButton = null;
+      this.selectedBorderButton = null;
+      this.onDeselectOptionButton();
+    }else if(button.name === 'Effect'){
+      this.selectedButton = null;
+      this.selectedAdjustmentButton = null;
+      this.selectedBorderButton = null;
+      this.onDeselectOptionButton();
+    }else if(button.name === 'Border'){
+      this.selectedButton = null;
+      this.selectedAdjustmentButton = null;
+      this.selectedEffectButton = null;
+      this.onDeselectOptionButton();
     }
+  }
+
+  onDeselectButton() {
+      this.selectedButton = null;
+      this.selectedAdjustmentButton = null;
+      this.selectedEffectButton = null;
+      this.selectedBorderButton = null;
+      this.onDeselectOptionButton();
+  }
+
+  onSelectOptionButton(button) {
+    // should set the option type
+    this.selectedOptionButton = button;
+  }
+
+  onDeselectOptionButton() {
+    this.selectedOptionButton = null;
   }
 
   getButtons(): void {

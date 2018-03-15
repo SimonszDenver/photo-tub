@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {DataService} from "../shared/services/data.service";
 
-const uri = 'http://localhost:4200/assets/uploaded-images';
+const uri = 'http://localhost:4200/assets/effects';
 
 @Component({
   selector: 'app-load-image',

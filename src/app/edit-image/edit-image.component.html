@@ -4,8 +4,7 @@
   <div style="display: inline; float: left; margin-top: 5%; ">
     <ul style="list-style: none; margin-top: 5%;">
       <li class="edit-button" *ngFor="let button of edit_buttons">
-        <div class="edit-button" id="{{ button.id  }}" (mouseenter)="onSelectButton(button)"
-             (mouseleave)="onDeselectButton(button)">
+        <div class="edit-button" id="{{ button.id  }}" (click)="onSelectButton(button)">
           <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
           <div style="margin-top: 8px">{{ button.name | uppercase}}</div>
         </div>
@@ -14,23 +13,23 @@
 
     <!-- load quick edit button -->
     <div style="margin-left: 22%">
-    <ul style="list-style: none; float: right; position: absolute; margin-top: 9%;">
-      <li class="quick-edit-list" [class.selected]="selectedButton && selectedButton.name === button.name"
-          *ngFor="let button of quick_edit">
-        <div class="quick-edit-button" id="quick-edit" style="margin-left: 1%;"
-             (mouseenter)="onSelectButton(button)" (mouseleave)="onDeselectButton(button)">
-          <i style="margin-top: 10px" class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i><br>
-          <div style="margin-top: 8px">{{button.name | uppercase}}</div>
-        </div>
-      </li>
-    </ul>
+      <ul style="list-style: none; float: right; position: absolute; overflow: hidden; bottom: 2%; margin-top: 9%; display: block">
+        <li class="quick-edit-list" [class.selected]="selectedButton && selectedButton.name === button.name"
+            *ngFor="let button of quick_edit">
+          <div class="quick-edit-button" id="quick-edit" style="margin-left: 1%;"
+               (click)="onSelectButton(button)">
+            <i style="margin-top: 10px" class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i><br>
+            <div style="margin-top: 8px">{{button.name | uppercase}}</div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
   <!-- load options of quick edit button -->
 
-  <ul style="list-style: none;float: left; position: static; margin-top: 13.5%;" *ngIf="selectedButton">
-    <li class="quick-edit-button" *ngFor="let button of quick_edit_buttons">
+  <ul style="list-style: none;float: left; position: static; overflow: hidden; margin-top: 14%; bottom: 2%" *ngIf="selectedButton">
+    <li class="quick-edit-button" *ngFor="let button of quick_edit_buttons" (click)="onSelectOptionButton(button)">
       <div class="quick-edit-button">
         <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
         <div style="margin-top: 8px">{{button.name | uppercase}}</div>
@@ -49,12 +48,14 @@
     </li>
   </ul>
 
-  <!-- load options of adjustment button options-->
+  <!-- load options of Effect button options-->
 
   <ul style="list-style: none;float: left; position: static; margin-top: 1%" *ngIf="selectedEffectButton">
     <li class="effect-button" *ngFor="let button of effect_button_options">
       <div class="effect-edit-button">
-        <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
+        <!--<i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>-->
+        <!--<div style="background-color: white; width: 60px; height: 40px"></div>-->
+        <img style="margin-top: 2px;border-radius: 0.5em;" src="../../assets/effects/{{button.icon}}">
         <div style="margin-top: 8px">{{button.name | uppercase}}</div>
       </div>
     </li>
@@ -64,7 +65,8 @@
   <ul style="list-style: none;float: left; position: static; margin-top: 1%" *ngIf="selectedBorderButton">
     <li class="border-button" *ngFor="let button of border_button_options">
       <div class="border-edit-button">
-        <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
+        <!--<i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>-->
+        <img style="margin-top: 2px;border-radius: 0.5em;" src="../../assets/borders/{{button.icon}}">
         <div style="margin-top: 8px">{{button.name | uppercase}}</div>
       </div>
     </li>
@@ -81,10 +83,15 @@
     </li>
   </ul>
 
-  <div id="image-div" style="position: fixed">
-
+  <div id="image-div" style="position: fixed" (click)="onDeselectButton()">
     <img id="editing-image" [src]="url" style="object-fit: cover">
-
   </div>
 
+
+
+  <!--<div>-->
+    <div id="slider-container" *ngIf="selectedOptionButton">
+      <input id="slider" type="range" style="background-color: #2B2B2B;">
+    </div>
+  <!--</div>-->
 </div>

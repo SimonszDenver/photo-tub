@@ -4,33 +4,38 @@ import {Button} from "../models/button";
 const buttons = [
   {
     id: 1,
-    icon: '',
+    icon: 'default-border.jpg',
     name: 'Default'
   },
   {
     id: 2,
-    icon: '',
-    name: 'Redacted'
+    icon: 'snowfir-border.jpg',
+    name: 'Snowfir'
   },
   {
     id: 3,
-    icon: '',
+    icon: 'film-border.jpg',
     name: 'Film'
   },
   {
     id: 4,
-    icon: '',
+    icon: 'grunge-border.jpg',
     name: 'Grunge'
   },
   {
     id: 5,
-    icon: '',
+    icon: 'ink-border.jpg',
     name: 'Ink'
   },
   {
     id: 6,
-    icon: '',
+    icon: 'ripped-paper-border.jpg',
     name: 'Ripped Paper'
+  },
+  {
+    id: 7,
+    icon: 'rounded-corner-border.jpg',
+    name: 'Rounded Corner'
   }
 ];
 @Injectable()
