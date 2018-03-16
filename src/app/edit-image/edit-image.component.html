@@ -28,7 +28,7 @@
 
   <!-- load options of quick edit button -->
 
-  <ul style="list-style: none;float: left; position: static; overflow: hidden; margin-top: 14%; bottom: 2%" *ngIf="selectedButton">
+  <ul style="list-style: none;float: left; position: static; overflow: hidden; margin-top: 11.5%;bottom: 2%" *ngIf="selectedButton">
     <li class="quick-edit-button" *ngFor="let button of quick_edit_buttons" (click)="onSelectOptionButton(button)">
       <div class="quick-edit-button">
         <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
@@ -51,11 +51,19 @@
   <!-- load options of Effect button options-->
 
   <ul style="list-style: none;float: left; position: static; margin-top: 1%" *ngIf="selectedEffectButton">
-    <li class="effect-button" *ngFor="let button of effect_button_options">
-      <div class="effect-edit-button">
-        <!--<i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>-->
-        <!--<div style="background-color: white; width: 60px; height: 40px"></div>-->
-        <img style="margin-top: 2px;border-radius: 0.5em;" src="../../assets/effects/{{button.icon}}">
+    <li class="effect-button" *ngFor="let button of effect_button_options_01">
+      <div class="effect-edit-button" (click)="addEffect(button)">
+        <img style="margin-top: 2px;border-radius: 0.5em;" src="../../assets/effects/png/{{button.icon}}">
+        <div style="margin-top: 8px">{{button.name | uppercase}}</div>
+      </div>
+    </li>
+  </ul>
+
+
+  <ul style="list-style: none;float: left; position: static; margin-top: 1%" *ngIf="selectedEffectButton">
+    <li class="effect-button" *ngFor="let button of effect_button_options_02">
+      <div class="effect-edit-button" (click)="addEffect(button)">
+        <img style="margin-top: 2px;border-radius: 0.5em;" src="../../assets/effects/png/{{button.icon}}">
         <div style="margin-top: 8px">{{button.name | uppercase}}</div>
       </div>
     </li>
@@ -84,7 +92,7 @@
   </ul>
 
   <div id="image-div" style="position: fixed" (click)="onDeselectButton()">
-    <img id="editing-image" [src]="url" style="object-fit: cover">
+    <img id="editing-image" [src]="url" style="object-fit: cover" class="{{effect}}">
   </div>
 
 
@@ -94,4 +102,5 @@
       <input id="slider" type="range" style="background-color: #2B2B2B;">
     </div>
   <!--</div>-->
+
 </div>

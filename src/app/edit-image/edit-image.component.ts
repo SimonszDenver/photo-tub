@@ -9,7 +9,7 @@ import {DataService} from "../shared/services/data.service";
 import {AdjustmentButtonOptionsService} from "../shared/services/adjustment-button-options.service";
 import {EffectButtonServiceService} from "../shared/services/effect-button-service.service";
 import {BorderButtonOptionsService} from "../shared/services/border-button-options.service";
-import {ThemePalette} from "@angular/material";
+
 
 @Component({
   selector: 'app-edit-image',
@@ -18,7 +18,6 @@ import {ThemePalette} from "@angular/material";
 })
 export class EditImageComponent implements OnInit {
 
-  // quick_edit_button: Button;
   selectedButton: Button;
   selectedAdjustmentButton: Button;
   selectedEffectButton: Button;
@@ -29,10 +28,14 @@ export class EditImageComponent implements OnInit {
   quick_edit_buttons: Button[];
   quick_edit: Button[];
   adjust_buttons_options: Button[];
-  effect_button_options: Button[];
+  effect_button_options_01: Button[];
+  effect_button_options_02: Button[];
   border_button_options: Button[];
+
+  effect: string;
   url = null;
 
+  // initialize services
   constructor(private edit_button_service: EditButtonService,
               private operation_button_service: OperationButtonService,
               private quick_edit_button_service: QuickEditOptionsService,
@@ -113,8 +116,10 @@ export class EditImageComponent implements OnInit {
     this.quick_edit = quick_edit;
     const adjust_buttons_options = this.adjustment_button_service.getButtons();
     this.adjust_buttons_options = adjust_buttons_options;
-    const effect_buttons_options = this.effect_button_service.getButtons();
-    this.effect_button_options = effect_buttons_options;
+    const effect_buttons_options_01 = this.effect_button_service.getButtons();
+    this.effect_button_options_01 = effect_buttons_options_01;
+    const effect_buttons_options_02 = this.effect_button_service.getButtons02();
+    this.effect_button_options_02 = effect_buttons_options_02;
     const border_button_options = this.border_button_service.getButtons();
     this.border_button_options = border_button_options;
   }
@@ -122,6 +127,33 @@ export class EditImageComponent implements OnInit {
   onOperationButtonClick(button) {
     if (button.name === 'Cancel') {
       this.router.navigate(['/load-image']);
+    }
+  }
+
+  // This method is used to add effect to the image
+  addEffect(button) {
+    if(button.name === 'Blur'){
+      this.effect = 'blur';
+    }else if(button.name === 'Brightness'){
+      this.effect = 'brightness';
+    }else if(button.name === 'Contrast'){
+      this.effect = 'contrast';
+    }else if(button.name === 'Greyscale'){
+      this.effect = 'greyscale';
+    }else if(button.name === 'Huerotate'){
+      this.effect = 'huerotate';
+    }else if(button.name === 'Invert'){
+      this.effect = 'invert';
+    }else if(button.name === 'Opacity'){
+      this.effect = 'opacity';
+    }else if(button.name === 'Saturate'){
+      this.effect = 'saturate';
+    }else if(button.name === 'Sepia'){
+      this.effect = 'sepia';
+    }else if(button.name === 'Shadow'){
+      this.effect = 'shadow';
+    }else{
+      this.effect = '';
     }
   }
 
