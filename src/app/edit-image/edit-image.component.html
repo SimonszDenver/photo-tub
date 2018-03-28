@@ -18,7 +18,7 @@
             *ngFor="let button of quick_edit">
           <div class="quick-edit-button" id="quick-edit" style="margin-left: 1%;"
                (click)="onSelectButton(button)">
-            <i style="margin-top: 10px" class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i><br>
+            <i style="margin-top: 10px" class="fa fa-sticky-note-o fa-3x" aria-hidden="true"></i><br>
             <div style="margin-top: 8px">{{button.name | uppercase}}</div>
           </div>
         </li>
@@ -37,17 +37,6 @@
     </li>
   </ul>
 
-  <!-- load options of adjustment button options-->
-
-  <ul style="list-style: none;float: left; position: static; margin-top: 5%" *ngIf="selectedAdjustmentButton">
-    <li class="adjustment-button" *ngFor="let button of adjust_buttons_options">
-      <div class="adjustment-edit-button">
-        <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
-        <div style="margin-top: 8px">{{button.name | uppercase}}</div>
-      </div>
-    </li>
-  </ul>
-
   <!-- load options of Effect button options-->
 
   <ul style="list-style: none;float: left; position: static; margin-top: 1%" *ngIf="selectedEffectButton">
@@ -57,6 +46,8 @@
         <div style="margin-top: 8px">{{button.name | uppercase}}</div>
       </div>
     </li>
+    <div>
+    </div>
   </ul>
 
 
@@ -67,6 +58,10 @@
         <div style="margin-top: 8px">{{button.name | uppercase}}</div>
       </div>
     </li>
+    <div class="effect-button" (click)="openDialog()">
+      <i style="color: white; margin-top: 10px;" class="fa fa-plus fa-3x" aria-hidden="true"></i>
+      <div style="margin-top: 8px">CUSTOMIZE EFFECT</div>
+    </div>
   </ul>
 
   <!-- load options of border button -->
@@ -96,9 +91,9 @@
   </div>
 
 
-
   <!--<div>-->
-    <div id="slider-container" *ngIf="selectedOptionButton">
+
+  <div id="slider-container" *ngIf="selectedOptionButton">
       <input id="slider" type="range" style="background-color: #2B2B2B;">
     </div>
   <!--</div>-->

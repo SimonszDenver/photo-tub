@@ -4,8 +4,8 @@ import {Button} from '../models/button';
 const button = [
   {
     id: 1,
-    icon: 'fa fa-pencil-square-o',
-    name: 'quick edit'
+    icon: 'fa fa-sticky-note-o',
+    name: 'Preset'
   }
 ];
 @Injectable()
