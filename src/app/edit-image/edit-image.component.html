@@ -1,7 +1,7 @@
 <div ngClass="main-class">
 
   <!--load buttons which are used to edit an image-->
-  <div style="display: inline; float: left; margin-top: 5%; ">
+  <div style="display: inline; float: left; margin-top: 5%; " *ngIf="customize_effect === 'show'">
     <ul style="list-style: none; margin-top: 5%;">
       <li class="edit-button" *ngFor="let button of edit_buttons">
         <div class="edit-button" id="{{ button.id  }}" (click)="onSelectButton(button)">
@@ -13,7 +13,8 @@
 
     <!-- load quick edit button -->
     <div style="margin-left: 22%">
-      <ul style="list-style: none; float: right; position: absolute; overflow: hidden; bottom: 2%; margin-top: 9%; display: block">
+      <ul
+        style="list-style: none; float: right; position: absolute; overflow: hidden; bottom: 2%; margin-top: 9%; display: block">
         <li class="quick-edit-list" [class.selected]="selectedButton && selectedButton.name === button.name"
             *ngFor="let button of quick_edit">
           <div class="quick-edit-button" id="quick-edit" style="margin-left: 1%;"
@@ -28,7 +29,8 @@
 
   <!-- load options of quick edit button -->
 
-  <ul style="list-style: none;float: left; position: static; overflow: hidden; margin-top: 11.5%;bottom: 2%" *ngIf="selectedButton">
+  <ul style="list-style: none;float: left; position: static; overflow: hidden; margin-top: 11.5%;bottom: 2%"
+      *ngIf="selectedButton">
     <li class="quick-edit-button" *ngFor="let button of quick_edit_buttons" (click)="onSelectOptionButton(button)">
       <div class="quick-edit-button">
         <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
@@ -39,45 +41,45 @@
 
   <!-- load options of Effect button options-->
 
-  <ul style="list-style: none;float: left; position: static; margin-top: 1%" *ngIf="selectedEffectButton">
+  <ul style="list-style: none;float: left; position: static; margin-top: 1%"
+      *ngIf="selectedEffectButton && customize_effect === 'show'">
     <li class="effect-button" *ngFor="let button of effect_button_options_01">
       <div class="effect-edit-button" (click)="addEffect(button)">
         <img style="margin-top: 2px;border-radius: 0.5em;" src="../../assets/effects/png/{{button.icon}}">
         <div style="margin-top: 8px">{{button.name | uppercase}}</div>
       </div>
     </li>
-    <div>
-    </div>
   </ul>
 
-
-  <ul style="list-style: none;float: left; position: static; margin-top: 1%" *ngIf="selectedEffectButton">
+  <ul style="list-style: none;float: left; position: static; margin-top: 1%"
+      *ngIf="selectedEffectButton && customize_effect === 'show'">
     <li class="effect-button" *ngFor="let button of effect_button_options_02">
       <div class="effect-edit-button" (click)="addEffect(button)">
         <img style="margin-top: 2px;border-radius: 0.5em;" src="../../assets/effects/png/{{button.icon}}">
         <div style="margin-top: 8px">{{button.name | uppercase}}</div>
       </div>
     </li>
-    <div class="effect-button" (click)="openDialog()">
+    <div class="effect-button" (click)="openDialog('hide')">
       <i style="color: white; margin-top: 10px;" class="fa fa-plus fa-3x" aria-hidden="true"></i>
       <div style="margin-top: 8px">CUSTOMIZE EFFECT</div>
     </div>
   </ul>
 
-  <!-- load options of border button -->
-  <ul style="list-style: none;float: left; position: static; margin-top: 1%" *ngIf="selectedBorderButton">
-    <li class="border-button" *ngFor="let button of border_button_options">
-      <div class="border-edit-button">
-        <!--<i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>-->
-        <img style="margin-top: 2px;border-radius: 0.5em;" src="../../assets/borders/{{button.icon}}">
-        <div style="margin-top: 8px">{{button.name | uppercase}}</div>
-      </div>
-    </li>
-  </ul>
 
+  <!-- load options of PRESET button -->
+  <div style="bottom: 0px; position: absolute; margin-left: 6%; margin-bottom: 1%">
+    <ul style="list-style: none;float: left; position: static; bottom: 4%" *ngIf="selectedPresetButton">
+      <li class="border-button" *ngFor="let button of preset_button_options">
+        <div class="border-edit-button">
+          <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i>
+          <div style="margin-top: 8px">{{button.name | uppercase}}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
 
   <!-- load operation buttons : cancel, save, print-->
-  <ul class="operation_button_set">
+  <ul class="operation_button_set" *ngIf="customize_effect === 'show'">
     <li>
       <div class="operation_button" *ngFor="let button of operation_buttons" (click)="onOperationButtonClick(button)">
         <i style="color: white; margin-top: 10px;" class="{{button.icon}} fa-3x" aria-hidden="true"></i><br>
@@ -90,12 +92,68 @@
     <img id="editing-image" [src]="url" style="object-fit: cover" class="{{effect}}">
   </div>
 
+  <div class="customize-effect" style="margin-left: 2%" *ngIf="customize_effect === 'hide'">
 
-  <!--<div>-->
+    <div class="row">
+      <div class="col-xs-3">
+        <h4 style="color: white">GRAIN</h4>
+        <div class="col-xs-12 slider-container">
+          <input class="slider" type="range" style="background-color: #2B2B2B;">
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <h4 style="color: white">VIGNET</h4>
+        <div class="col-xs-12 slider-container">
+          <input class="slider" type="range" style="background-color: #2B2B2B;">
+        </div>
 
-  <div id="slider-container" *ngIf="selectedOptionButton">
-      <input id="slider" type="range" style="background-color: #2B2B2B;">
+      </div>
+      <div class="col-xs-3">
+        <h4 style="color: white">BRIGHTNESS</h4>
+        <div class="col-xs-12 slider-container">
+          <input class="slider" type="range" style="background-color: #2B2B2B;">
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div>
+          <div style="margin-top: 8%;right: 0px; position: absolute; background-color: #2B2B2B; height: 30px"
+               class="col-xs-6">
+            <div style="color: white; margin-top: 5px">ADD EFFECT</div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  <!--</div>-->
+    <div class="row">
+      <div class="col-xs-3">
+        <h4 style="color: white">CONTRAST</h4>
+        <div class="col-xs-12 slider-container">
+          <input class="slider" type="range" style="background-color: #2B2B2B;">
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <h4 style="color: white">TEMPARATURE</h4>
+        <div class="col-xs-12 slider-container">
+          <input class="slider" type="range" style="background-color: #2B2B2B;">
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <h4 style="color: white">VIBRANCE</h4>
+        <div class="col-xs-12 slider-container">
+          <input class="slider" type="range" style="background-color: #2B2B2B;">
+        </div>
+      </div>
+
+      <div class="col-xs-3">
+        <div>
+          <div style="margin-top: 5%;right: 0px; position: absolute; background-color: #2B2B2B; height: 30px"
+               class="col-xs-6">
+            <div style="color: white; margin-top: 5px" (click)="cancelOperation('show')">CANCEL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </div>

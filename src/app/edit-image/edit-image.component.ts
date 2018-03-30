@@ -9,7 +9,7 @@ import {DataService} from "../shared/services/data.service";
 import {EffectButtonServiceService} from "../shared/services/effect-button-service.service";
 import {BorderButtonOptionsService} from "../shared/services/border-button-options.service";
 import {MatDialog} from '@angular/material';
-import {CustomizeEffectComponent} from "./customize-effect/customize-effect.component";
+import {PresetButtonService} from '../shared/services/preset-button.service';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class EditImageComponent implements OnInit {
 
   selectedButton: Button;
   selectedEffectButton: Button;
-  selectedBorderButton: Button;
+  selectedPresetButton: Button;
   selectedOptionButton: Button;
   edit_buttons: Button[];
   operation_buttons: Button[];
@@ -29,10 +29,11 @@ export class EditImageComponent implements OnInit {
   quick_edit: Button[];
   effect_button_options_01: Button[];
   effect_button_options_02: Button[];
-  border_button_options: Button[];
+  preset_button_options: Button[];
 
   effect: string;
   url = null;
+  customize_effect = 'show';
 
   // initialize services
   constructor(private edit_button_service: EditButtonService,
@@ -42,6 +43,7 @@ export class EditImageComponent implements OnInit {
               private dataService: DataService,
               private effect_button_service: EffectButtonServiceService,
               private border_button_service: BorderButtonOptionsService,
+              private preset_button_service: PresetButtonService,
               private router: Router,
               private dialog: MatDialog) {
     this.url = dataService.url;
@@ -56,8 +58,8 @@ export class EditImageComponent implements OnInit {
       this.selectedButton = button;
     }else if(button.name === 'Effect'){
       this.selectedEffectButton = button;
-    }else if(button.name === 'Border'){
-      this.selectedBorderButton = button;
+    }else if(button.name === 'Preset'){
+      this.selectedPresetButton = button;
     }
     this.deselectOtherButton(button);
   }
@@ -65,17 +67,17 @@ export class EditImageComponent implements OnInit {
   deselectOtherButton(button){
     if(button.name === 'quick edit') {
       this.selectedEffectButton = null;
-      this.selectedBorderButton = null;
+      this.selectedPresetButton = null;
     }else if(button.name === 'Adjustment'){
       this.selectedButton = null;
       this.selectedEffectButton = null;
-      this.selectedBorderButton = null;
+      this.selectedPresetButton = null;
       this.onDeselectOptionButton();
     }else if(button.name === 'Effect'){
       this.selectedButton = null;
-      this.selectedBorderButton = null;
+      this.selectedPresetButton = null;
       this.onDeselectOptionButton();
-    }else if(button.name === 'Border'){
+    }else if(button.name === 'Preset'){
       this.selectedButton = null;
       this.selectedEffectButton = null;
       this.onDeselectOptionButton();
@@ -85,7 +87,7 @@ export class EditImageComponent implements OnInit {
   onDeselectButton() {
       this.selectedButton = null;
       this.selectedEffectButton = null;
-      this.selectedBorderButton = null;
+      this.selectedPresetButton = null;
       this.onDeselectOptionButton();
   }
 
@@ -111,8 +113,8 @@ export class EditImageComponent implements OnInit {
     this.effect_button_options_01 = effect_buttons_options_01;
     const effect_buttons_options_02 = this.effect_button_service.getButtons02();
     this.effect_button_options_02 = effect_buttons_options_02;
-    const border_button_options = this.border_button_service.getButtons();
-    this.border_button_options = border_button_options;
+    const preset_button_options = this.preset_button_service.getButtons();
+    this.preset_button_options = preset_button_options;
   }
 
   onOperationButtonClick(button) {
@@ -148,10 +150,11 @@ export class EditImageComponent implements OnInit {
     }
   }
 
-  openDialog(){
-    console.log('working');
-    const dialogRef = this.dialog.open(CustomizeEffectComponent,{
-      height: '350px'
-    });
+  cancelOperation(value) {
+    this.customize_effect = value;
+  }
+
+  openDialog(value){
+    this.customize_effect = value;
   }
 }

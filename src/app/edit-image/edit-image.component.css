@@ -57,7 +57,7 @@ ul {
   /*right: 0px;*/
 }
 
-.quick-edit-button, .adjustment-button, .effect-button, .border-button {
+.quick-edit-button, .adjustment-button, .effect-button, .border-button, .preset-button {
   color: white;
   width: 70px;
   height: 70px;
@@ -89,21 +89,21 @@ ul {
   max-width: 100%;
 }
 
-#slider-container {
-  background-color: #2B2B2B;
-  position: absolute;
-  bottom: 40px;
-  width: 30%;
-  margin-left: 30%;
+.cont{
+
 }
 
-#slider {
-  width: 90%;
+.slider-container {
+  background-color: #2B2B2B;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.slider {
+  /*width: 90%;*/
   margin-top: 4px;
   margin-right: 4px;
 }
-
-
 
 .blur {
   -webkit-filter: blur(4px);
@@ -153,4 +153,12 @@ ul {
 .shadow {
   -webkit-filter: drop-shadow(8px 8px 10px green);
   filter: drop-shadow(8px 8px 10px green);
+}
+
+.customize-effect {
+  height: 20%;
+  min-width: 90%;
+  /*background-color: white;*/
+  bottom: 5%;
+  position: absolute;
 }
