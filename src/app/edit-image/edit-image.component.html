@@ -89,8 +89,19 @@
   </ul>
 
   <div id="image-div" style="position: fixed" (click)="onDeselectButton()">
-    <img id="editing-image" [src]="url" style="object-fit: cover" class="{{effect}}">
+    <!--Image -->
+    <div class="slideshow-container" *ngFor="let url of urls">
+
+      <div class="mySlides" style="max-height: 100%;max-width: 100%; position: relative">
+        <img [src]="url" class="editing-image" style="object-fit: cover;">
+      </div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <br>
   </div>
+
 
   <div class="customize-effect" style="margin-left: 2%" *ngIf="customize_effect === 'hide'">
 
@@ -154,6 +165,5 @@
       </div>
     </div>
   </div>
-
 
 </div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class DataService {
-  url: any;
+  url: any[] = [];
 
   constructor() { }
 

@@ -4,7 +4,15 @@
     <h1 style="cursor: default">PHOTO TUB</h1>
     <div>
       <i style="color: white; cursor: pointer;" class="fa fa-user-circle-o fa-3x" aria-hidden="true"></i><br>
-      <input type="file" style=" cursor: pointer; font-size: 12px; margin-top: 2%; margin-left: 23%" (change)="readUrl($event)">
+      <!--<input type="file" style=" cursor: pointer; font-size: 12px; margin-top: 2%; margin-left: 23%" (change)="readUrl($event)" webkitdirectory directory multiple>-->
+      <div class="row">
+        <div id="fileHolder">
+          <div class="folder-icon"></div>
+          <input type="file" id="fileURL" style=" cursor: pointer; font-size: 12px; margin-top: 2%; margin-left: 23%"
+                 (change)="readUrl($event)" webkitdirectory multiple>
+        </div>
+        <div id="result"></div>
+      </div>
     </div>
   </div>
 </div>

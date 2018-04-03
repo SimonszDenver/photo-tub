@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {DataService} from "../shared/services/data.service";
+import {isUndefined} from "util";
 
 const uri = 'http://localhost:4200/assets/effects';
 
@@ -13,6 +14,7 @@ const uri = 'http://localhost:4200/assets/effects';
 export class LoadImageComponent implements OnInit {
 
   url = null;
+
   constructor(private router: Router,
               private dataservice: DataService) {
   }
@@ -24,14 +26,22 @@ export class LoadImageComponent implements OnInit {
   }
 
   readUrl(event: any) {
-       const reader = new FileReader();
-      reader.onload = (event1: any) => {
-        this.dataservice.url = event1.target.result;
 
-        if (this.dataservice.url != null) {
+    var files = event.target.files;
+    var output = document.getElementById('result');
+    for(var i=0;i<files.length;i++){
+      var file = files[i];
+      var reader = new FileReader();
+      reader.onload = (event1: any) => {
+        var picFile = event1.target;
+        this.dataservice.url.push(picFile.result);
+        if(!isUndefined(this.dataservice.url)){
           this.redirect();
         }
       };
-       reader.readAsDataURL(event.target.files[0]);
+      reader.readAsDataURL(file);
+    }
+
   }
+
 }

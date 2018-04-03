@@ -32,7 +32,7 @@ export class EditImageComponent implements OnInit {
   preset_button_options: Button[];
 
   effect: string;
-  url = null;
+  urls = null;
   customize_effect = 'show';
 
   // initialize services
@@ -42,11 +42,10 @@ export class EditImageComponent implements OnInit {
               private quick_edit_service: QuickEditButtonService,
               private dataService: DataService,
               private effect_button_service: EffectButtonServiceService,
-              private border_button_service: BorderButtonOptionsService,
               private preset_button_service: PresetButtonService,
-              private router: Router,
-              private dialog: MatDialog) {
-    this.url = dataService.url;
+              private router: Router) {
+    console.log(this.dataService.url);
+    this.urls = dataService.url;
   }
 
   ngOnInit() {
