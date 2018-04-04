@@ -92,7 +92,7 @@
     <!--Image -->
     <div class="slideshow-container" *ngFor="let url of urls">
 
-      <div class="mySlides" style="max-height: 100%;max-width: 100%; position: relative">
+      <div class="mySlides"> <!--style="max-height: 100%;max-width: 100%; position: relative"-->
         <img [src]="url.path" class="editing-image {{url.className}}" style="object-fit: cover;" ><!-- [ngClass]="getClass(url.id)">;-->
       </div>
     </div>

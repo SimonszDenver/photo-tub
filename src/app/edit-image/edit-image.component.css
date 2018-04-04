@@ -69,24 +69,26 @@ ul {
   position: inherit;
 }
 
-#image-div {
+#image-div, .mySlides {
   min-width: 0px;
   min-height: 0px;
   width: 60%;
-  height: 60%;
-  position: absolute;
+  height: 80%;
+  /*position: absolute;*/
   z-index: -1;
   left: 0px;
   top: 0px;
   margin: 0 auto;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-left: 20%;
+  overflow: hidden;
   /*background-color: white;*/
 }
 
 .editing-image {
   max-height: 100%;
   max-width: 100%;
+  /*position: absolute;*/
 }
 
 .cont{
