@@ -93,12 +93,12 @@
     <div class="slideshow-container" *ngFor="let url of urls">
 
       <div class="mySlides" style="max-height: 100%;max-width: 100%; position: relative">
-        <img [src]="url" class="editing-image" style="object-fit: cover;">
+        <img [src]="url.path" class="editing-image {{url.className}}" style="object-fit: cover;" ><!-- [ngClass]="getClass(url.id)">;-->
       </div>
     </div>
 
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <a class="prev" onclick="plusSlides(-1)" (click)="slideDecrease()">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)" (click)="slideIncrease()">&#10095;</a>
     <br>
   </div>
 

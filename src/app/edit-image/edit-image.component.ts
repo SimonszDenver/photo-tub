@@ -10,6 +10,7 @@ import {EffectButtonServiceService} from "../shared/services/effect-button-servi
 import {BorderButtonOptionsService} from "../shared/services/border-button-options.service";
 import {MatDialog} from '@angular/material';
 import {PresetButtonService} from '../shared/services/preset-button.service';
+import {Url} from "../shared/models/url";
 
 
 @Component({
@@ -32,9 +33,11 @@ export class EditImageComponent implements OnInit {
   preset_button_options: Button[];
 
   effect: string;
-  urls = null;
+  urls: Url[] = null;
   customize_effect = 'show';
 
+  slideIndex = 0;
+  slides = 0;
   // initialize services
   constructor(private edit_button_service: EditButtonService,
               private operation_button_service: OperationButtonService,
@@ -44,8 +47,8 @@ export class EditImageComponent implements OnInit {
               private effect_button_service: EffectButtonServiceService,
               private preset_button_service: PresetButtonService,
               private router: Router) {
-    console.log(this.dataService.url);
-    this.urls = dataService.url;
+    this.urls = this.dataService.url;
+    this.slides = this.urls[0].id;
   }
 
   ngOnInit() {
@@ -124,28 +127,31 @@ export class EditImageComponent implements OnInit {
 
   // This method is used to add effect to the image
   addEffect(button) {
+    console.log("working");
+    const value = this.slideIndex;
+    console.log("value "+value);
     if(button.name === 'Blur'){
-      this.effect = 'blur';
+      this.urls[value].className = 'blur';
     }else if(button.name === 'Brightness'){
-      this.effect = 'brightness';
+      this.urls[value].className = 'brightness';
     }else if(button.name === 'Contrast'){
-      this.effect = 'contrast';
+      this.urls[value].className = 'contrast';
     }else if(button.name === 'Greyscale'){
-      this.effect = 'greyscale';
+      this.urls[value].className = 'greyscale';
     }else if(button.name === 'Huerotate'){
-      this.effect = 'huerotate';
+      this.urls[value].className = 'huerotate';
     }else if(button.name === 'Invert'){
-      this.effect = 'invert';
+      this.urls[value].className = 'invert';
     }else if(button.name === 'Opacity'){
-      this.effect = 'opacity';
+      this.urls[value].className = 'opacity';
     }else if(button.name === 'Saturate'){
-      this.effect = 'saturate';
+      this.urls[value].className = 'saturate';
     }else if(button.name === 'Sepia'){
-      this.effect = 'sepia';
+      this.urls[value].className = 'sepia';
     }else if(button.name === 'Shadow'){
-      this.effect = 'shadow';
+      this.urls[value].className = 'shadow';
     }else{
-      this.effect = '';
+      this.urls[value].className = '';
     }
   }
 
@@ -155,5 +161,21 @@ export class EditImageComponent implements OnInit {
 
   openDialog(value){
     this.customize_effect = value;
+  }
+
+  slideIncrease(){
+    this.slideIndex++;
+    this.increseSlideNumber(this.slideIndex);
+  }
+
+  slideDecrease(){
+    this.slideIndex--;
+    this.increseSlideNumber(this.slideIndex);
+  }
+
+
+  increseSlideNumber(n){
+    if (n >= this.slides) {this.slideIndex = 0}
+    if (n < 0) {this.slideIndex= this.slides-1}
   }
 }

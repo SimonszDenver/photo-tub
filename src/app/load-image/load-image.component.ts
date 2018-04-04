@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 import {DataService} from "../shared/services/data.service";
 import {isUndefined} from "util";
+import {Url} from "../shared/models/url";
 
 const uri = 'http://localhost:4200/assets/effects';
 
@@ -34,7 +35,7 @@ export class LoadImageComponent implements OnInit {
       var reader = new FileReader();
       reader.onload = (event1: any) => {
         var picFile = event1.target;
-        this.dataservice.url.push(picFile.result);
+        this.dataservice.url.push(new Url(i,picFile.result,'effect'));
         if(!isUndefined(this.dataservice.url)){
           this.redirect();
         }
